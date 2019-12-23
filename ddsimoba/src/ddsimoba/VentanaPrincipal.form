@@ -31,6 +31,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Tienda"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="listaArticulos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar Art&#xed;culos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listaArticulosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="addArticulo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="A&#xf1;adir nuevo art&#xed;culo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addArticuloActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

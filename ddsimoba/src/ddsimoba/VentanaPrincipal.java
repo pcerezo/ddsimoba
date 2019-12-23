@@ -33,6 +33,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuAltaUsuario = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         menuTienda = new javax.swing.JMenu();
+        listaArticulos = new javax.swing.JMenuItem();
+        addArticulo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Información MOBA");
@@ -70,6 +72,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(menuUsuarios);
 
         menuTienda.setText("Tienda");
+
+        listaArticulos.setText("Listar Artículos");
+        listaArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaArticulosActionPerformed(evt);
+            }
+        });
+        menuTienda.add(listaArticulos);
+
+        addArticulo.setText("Añadir nuevo artículo");
+        addArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addArticuloActionPerformed(evt);
+            }
+        });
+        menuTienda.add(addArticulo);
+
         jMenuBar1.add(menuTienda);
 
         setJMenuBar(jMenuBar1);
@@ -100,6 +119,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         users.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void listaArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaArticulosActionPerformed
+        ListarArticulos articulos = new ListarArticulos();
+        this.escritorio.add(articulos);
+        articulos.setVisible(true);
+    }//GEN-LAST:event_listaArticulosActionPerformed
+
+    private void addArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addArticuloActionPerformed
+       FormularioAltaArticulo art = new FormularioAltaArticulo();
+       this.escritorio.add(art);
+       art.setVisible(true);
+    }//GEN-LAST:event_addArticuloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,9 +169,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem addArticulo;
     public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem listaArticulos;
     private javax.swing.JMenuItem menuAltaUsuario;
     private javax.swing.JMenu menuTienda;
     private javax.swing.JMenu menuUsuarios;

@@ -14,13 +14,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author domin
  */
-public class ListarUsuarios extends javax.swing.JInternalFrame {
+public class ListarPartidas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ListarUsuarios
      */
     
-    public ListarUsuarios() {
+    public ListarPartidas() {
         initComponents();
         mostrarTabla();
     }
@@ -34,12 +34,12 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
         DefaultTableModel modelotabla =  new DefaultTableModel();
         
         //Creamos la consulta
-        String consulta = "SELECT * FROM cuentapertenece";
+        String consulta = "SELECT * FROM partida";
         //Obtenemos resultados de la consulta
         ResultSet rs = conex.creaTabla(consulta);
         
         //Modificamos el modelo para decirle que las columnas llevan dichos identificadores ó nombres que aparecerán
-        modelotabla.setColumnIdentifiers(new Object[]{"Usuario","idEquipo","Contraseña","Email","Fec_Nac","Servidor","Saldo","Karma"});
+        modelotabla.setColumnIdentifiers(new Object[]{"idPartida","tipo","descripcion"});
     
         //Iniciamos el relleno de la tabla
         
@@ -47,7 +47,7 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
             
             while(rs.next()){ //Iteramos sobre el ResultSet
                 //Añadimos filas al modelo
-                modelotabla.addRow(new Object[]{rs.getString("nombre"),rs.getString("idequipo"),rs.getString("contrasena"), rs.getString("correo"), rs.getString("fec_nac"), rs.getString("servidor"), rs.getString("saldo"), rs.getString("karma")});
+                modelotabla.addRow(new Object[]{rs.getString("idPartida"),rs.getString("tipo"),rs.getString("descripcion")});
             }
             
             this.tabla.setModel(modelotabla);
@@ -80,7 +80,7 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Lista Usuarios");
+        setTitle("Lista Partidas");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,14 +95,14 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
-        bEliminar.setText("Eliminar Usuario");
+        bEliminar.setText("Eliminar Partida");
         bEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bEliminarActionPerformed(evt);
             }
         });
 
-        bModificar.setText("Modificar Usuario");
+        bModificar.setText("Modificar Partida");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bModificarActionPerformed(evt);
@@ -122,7 +122,7 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(91, 91, 91)
@@ -137,14 +137,16 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bEliminar)
                     .addComponent(bModificar)
                     .addComponent(refrescar))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
+
+        getAccessibleContext().setAccessibleName("Lista Partidas");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,13 +177,15 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
             //nombre,idequipo,contraseña,correo,fec_nac,servidor,saldo,karma
             
             //Creamos una nueva ventana de modificación
-            FormularioModificacionUsuario modi = new FormularioModificacionUsuario(datosFila.get(0), datosFila.get(1), datosFila.get(2), datosFila.get(3), datosFila.get(4), datosFila.get(5), datosFila.get(6), datosFila.get(7));
+            
+            
+            FormularioModificacionPartida modi = new FormularioModificacionPartida(datosFila.get(0), datosFila.get(1), datosFila.get(2));
             //La añandimos a la ventana principal (Al escritorio principal)
             VentanaPrincipal.escritorio.add(modi);
             //La colocamos delante
             modi.toFront();
             //La hacemos visible
-            modi.setVisible(true);
+            modi.setVisible(true); 
             
             
         }else{//No se ha seleccionado una fila. Damos mensaje de alerta
@@ -205,7 +209,7 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
             
             //Recogemos el usuario seleccionado
             
-            String userSelected = this.tabla.getValueAt(numeroFila,0).toString();
+            String partidaSelected = this.tabla.getValueAt(numeroFila,0).toString();
             
             //Añadimos ventana de aviso al panel
             //VentanaAvisoBorrado ventana = new VentanaAvisoBorrado();
@@ -224,19 +228,53 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
             ConexionDB conexion = new ConexionDB();
         
             //Preparo la consulta
-            PreparedStatement pstm = null;   
-                String sqlQuery = "DELETE FROM cuentapertenece WHERE nombre = ?";
+            PreparedStatement pstm1 = null;   
+                String sqlQuery1 = "DELETE FROM juega WHERE idpartida = ?";
+                
+            PreparedStatement pstm2 = null;   
+                String sqlQuery2 = "DELETE FROM partida WHERE idpartida = ?";
                
             //Preparo la sentencia a ejecutar.
             try{
             
             
-            pstm = conexion.con.prepareStatement(sqlQuery);
-            pstm.setString(1, userSelected);
+            pstm1 = conexion.con.prepareStatement(sqlQuery1);
+            pstm1.setString(1, partidaSelected);
+                                
+            int resultado = pstm1.executeUpdate();
         
-            int resultado = pstm.executeUpdate();
+                    if(resultado !=0){
+            
+                        JOptionPane.showMessageDialog(null, "Se ha eliminado la fila correctamente", "Alerta ", JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "No se ha eliminado en juega ya que no está dicha partida", "Alerta ", JOptionPane.INFORMATION_MESSAGE);
+                    }
+            
+             }catch(SQLException ex){
+                ex.printStackTrace(System.out);
+                throw new RuntimeException(ex);
+             
+             }finally{
+            
+                    try{
+                        if(pstm1!=null) pstm1.close();
+                        //if(conexion.con!=null) conexion.cerrarConexionDB();
+                     }catch(SQLException ex){
+                           ex.printStackTrace(System.out);
+                            throw new RuntimeException(ex);
+                    }
+            }
+            
+            //Preparo la sentencia a ejecutar.
+            try{
+            
+            
+            pstm2 = conexion.con.prepareStatement(sqlQuery2);
+            pstm2.setString(1, partidaSelected);
         
-                    if(resultado ==1){
+            int resultado = pstm2.executeUpdate();
+        
+                    if(resultado !=0){
             
                         JOptionPane.showMessageDialog(null, "Se ha eliminado la fila correctamente", "Alerta ", JOptionPane.INFORMATION_MESSAGE);
                     }else{
@@ -250,7 +288,7 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
              }finally{
             
                     try{
-                        if(pstm!=null) pstm.close();
+                        if(pstm2!=null) pstm1.close();
                         if(conexion.con!=null) conexion.cerrarConexionDB();
                      }catch(SQLException ex){
                            ex.printStackTrace(System.out);
@@ -259,9 +297,6 @@ public class ListarUsuarios extends javax.swing.JInternalFrame {
             }
             
             
-          /*  else{
-                ventana.dispose();
-            }*/
             
             
         }else{//No se ha seleccionado una fila. Damos mensaje de alerta

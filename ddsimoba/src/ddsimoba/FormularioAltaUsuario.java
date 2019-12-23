@@ -79,6 +79,11 @@ public class FormularioAltaUsuario extends javax.swing.JInternalFrame {
         jLabel6.setText("Servidor");
 
         serverUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EU", "NA", "LPL", "LCK" }));
+        serverUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serverUsuarioActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Dar de Alta");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +261,10 @@ public class FormularioAltaUsuario extends javax.swing.JInternalFrame {
         this.fechUsuario.setText("");
         this.passUsuario.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void serverUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serverUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_serverUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

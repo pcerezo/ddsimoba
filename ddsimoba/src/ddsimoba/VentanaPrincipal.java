@@ -35,6 +35,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuTienda = new javax.swing.JMenu();
         listaArticulos = new javax.swing.JMenuItem();
         addArticulo = new javax.swing.JMenuItem();
+        menuPartida = new javax.swing.JMenu();
+        listarPartidas = new javax.swing.JMenuItem();
+        bAñadirPartida = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Información MOBA");
@@ -91,6 +94,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuTienda);
 
+        menuPartida.setText("Partida");
+
+        listarPartidas.setText("Listar Partidas");
+        listarPartidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarPartidasActionPerformed(evt);
+            }
+        });
+        menuPartida.add(listarPartidas);
+
+        bAñadirPartida.setText("añadir partida");
+        bAñadirPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAñadirPartidaActionPerformed(evt);
+            }
+        });
+        menuPartida.add(bAñadirPartida);
+
+        jMenuBar1.add(menuPartida);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,6 +155,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        art.setVisible(true);
     }//GEN-LAST:event_addArticuloActionPerformed
 
+    private void listarPartidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPartidasActionPerformed
+        ListarPartidas partidas = new ListarPartidas();
+        this.escritorio.add(partidas);
+        partidas.setVisible(true);
+    }//GEN-LAST:event_listarPartidasActionPerformed
+
+    private void bAñadirPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAñadirPartidaActionPerformed
+        FormularioAltaPartida part = new FormularioAltaPartida();
+        this.escritorio.add(part);
+        part.setVisible(true);
+    }//GEN-LAST:event_bAñadirPartidaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,11 +205,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addArticulo;
+    private javax.swing.JMenuItem bAñadirPartida;
     public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem listaArticulos;
+    private javax.swing.JMenuItem listarPartidas;
     private javax.swing.JMenuItem menuAltaUsuario;
+    private javax.swing.JMenu menuPartida;
     private javax.swing.JMenu menuTienda;
     private javax.swing.JMenu menuUsuarios;
     // End of variables declaration//GEN-END:variables

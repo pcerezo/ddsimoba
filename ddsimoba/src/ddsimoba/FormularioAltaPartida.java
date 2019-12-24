@@ -132,14 +132,10 @@ public class FormularioAltaPartida extends javax.swing.JInternalFrame {
         
         String sqlQuery = "INSERT INTO partida(idpartida,tipo,descripcion) VALUES(?,?,?)";
         
-        Random r = new Random();
-        int i = r.nextInt(126);
-        String id = Integer.toString(i);
-        
         //Preparo la sentencia a ejecutar.
         try{
         pstm = conexion.con.prepareStatement(sqlQuery);
-        pstm.setString(1, id);
+        pstm.setString(1, null);
         pstm.setString(2, tipo);
         pstm.setString(3, description);
         

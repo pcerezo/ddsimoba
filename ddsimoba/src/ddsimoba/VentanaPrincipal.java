@@ -32,6 +32,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuUsuarios = new javax.swing.JMenu();
         menuAltaUsuario = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        equipos = new javax.swing.JMenu();
+        listarEquipo = new javax.swing.JMenuItem();
         menuTienda = new javax.swing.JMenu();
         listaArticulos = new javax.swing.JMenuItem();
         addArticulo = new javax.swing.JMenuItem();
@@ -40,6 +42,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bAñadirPartida = new javax.swing.JMenuItem();
         menuResultados = new javax.swing.JMenu();
         listarResultados = new javax.swing.JMenuItem();
+        denuncias = new javax.swing.JMenu();
+        revisarDenuncia = new javax.swing.JMenuItem();
+        historialDenuncias = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Información MOBA");
@@ -76,6 +81,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuUsuarios);
 
+        equipos.setText("Equipos");
+
+        listarEquipo.setText("Listar Equipo");
+        listarEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarEquipoActionPerformed(evt);
+            }
+        });
+        equipos.add(listarEquipo);
+
+        jMenuBar1.add(equipos);
+
         menuTienda.setText("Tienda");
 
         listaArticulos.setText("Listar Artículos");
@@ -106,7 +123,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         menuPartida.add(listarPartidas);
 
-        bAñadirPartida.setText("añadir partida");
+        bAñadirPartida.setText("Añadir Partida");
         bAñadirPartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAñadirPartidaActionPerformed(evt);
@@ -116,9 +133,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuPartida);
 
-        menuResultados.setText("resultados");
+        menuResultados.setText("Resultados");
 
-        listarResultados.setText("listarResultados");
+        listarResultados.setText("Listar Resultados");
         listarResultados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listarResultadosActionPerformed(evt);
@@ -127,6 +144,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuResultados.add(listarResultados);
 
         jMenuBar1.add(menuResultados);
+
+        denuncias.setText("Denuncias");
+
+        revisarDenuncia.setText("Revisar Denuncia");
+        revisarDenuncia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                revisarDenunciaActionPerformed(evt);
+            }
+        });
+        denuncias.add(revisarDenuncia);
+
+        historialDenuncias.setText("Historial de Denuncias");
+        historialDenuncias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historialDenunciasActionPerformed(evt);
+            }
+        });
+        denuncias.add(historialDenuncias);
+
+        jMenuBar1.add(denuncias);
 
         setJMenuBar(jMenuBar1);
 
@@ -187,6 +224,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lista.setVisible(true);
     }//GEN-LAST:event_listarResultadosActionPerformed
 
+    private void listarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarEquipoActionPerformed
+        ListarEquipos lista = new ListarEquipos();
+        this.escritorio.add(lista);
+        lista.setVisible(true);
+    }//GEN-LAST:event_listarEquipoActionPerformed
+
+    private void historialDenunciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialDenunciasActionPerformed
+        HistorialDenuncias historial = new HistorialDenuncias();
+        this.escritorio.add(historial);
+        historial.setVisible(true);
+    }//GEN-LAST:event_historialDenunciasActionPerformed
+
+    private void revisarDenunciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revisarDenunciaActionPerformed
+        RevisarDenuncias den = new RevisarDenuncias();
+        this.escritorio.add(den);
+        den.setVisible(true);
+    }//GEN-LAST:event_revisarDenunciaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -226,10 +281,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addArticulo;
     private javax.swing.JMenuItem bAñadirPartida;
+    private javax.swing.JMenu denuncias;
+    private javax.swing.JMenu equipos;
     public static javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem historialDenuncias;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem listaArticulos;
+    private javax.swing.JMenuItem listarEquipo;
     private javax.swing.JMenuItem listarPartidas;
     private javax.swing.JMenuItem listarResultados;
     private javax.swing.JMenuItem menuAltaUsuario;
@@ -237,5 +296,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuResultados;
     private javax.swing.JMenu menuTienda;
     private javax.swing.JMenu menuUsuarios;
+    private javax.swing.JMenuItem revisarDenuncia;
     // End of variables declaration//GEN-END:variables
 }

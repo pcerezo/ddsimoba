@@ -137,7 +137,7 @@ public class ListarPartidas extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bEliminar)
@@ -145,8 +145,6 @@ public class ListarPartidas extends javax.swing.JInternalFrame {
                     .addComponent(refrescar))
                 .addGap(48, 48, 48))
         );
-
-        getAccessibleContext().setAccessibleName("Lista Partidas");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

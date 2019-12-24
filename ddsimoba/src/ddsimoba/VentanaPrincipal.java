@@ -38,6 +38,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuPartida = new javax.swing.JMenu();
         listarPartidas = new javax.swing.JMenuItem();
         bAñadirPartida = new javax.swing.JMenuItem();
+        menuResultados = new javax.swing.JMenu();
+        listarResultados = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Información MOBA");
@@ -114,6 +116,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuPartida);
 
+        menuResultados.setText("resultados");
+
+        listarResultados.setText("listarResultados");
+        listarResultados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarResultadosActionPerformed(evt);
+            }
+        });
+        menuResultados.add(listarResultados);
+
+        jMenuBar1.add(menuResultados);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,6 +181,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         part.setVisible(true);
     }//GEN-LAST:event_bAñadirPartidaActionPerformed
 
+    private void listarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarResultadosActionPerformed
+        ListarResultadosPartidas lista = new ListarResultadosPartidas();
+        this.escritorio.add(lista);
+        lista.setVisible(true);
+    }//GEN-LAST:event_listarResultadosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -211,8 +231,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem listaArticulos;
     private javax.swing.JMenuItem listarPartidas;
+    private javax.swing.JMenuItem listarResultados;
     private javax.swing.JMenuItem menuAltaUsuario;
     private javax.swing.JMenu menuPartida;
+    private javax.swing.JMenu menuResultados;
     private javax.swing.JMenu menuTienda;
     private javax.swing.JMenu menuUsuarios;
     // End of variables declaration//GEN-END:variables

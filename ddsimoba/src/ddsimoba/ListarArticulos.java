@@ -74,6 +74,8 @@ public class ListarArticulos extends javax.swing.JInternalFrame {
         tabla = new javax.swing.JTable();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         borrarArticulo = new javax.swing.JButton();
+        modificarArticulo = new javax.swing.JButton();
+        refrescar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -101,6 +103,20 @@ public class ListarArticulos extends javax.swing.JInternalFrame {
             }
         });
 
+        modificarArticulo.setText("Modificar artículo");
+        modificarArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarArticuloActionPerformed(evt);
+            }
+        });
+
+        refrescar.setText("Refrescar");
+        refrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refrescarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,7 +128,11 @@ public class ListarArticulos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addComponent(borrarArticulo))
+                        .addComponent(borrarArticulo)
+                        .addGap(62, 62, 62)
+                        .addComponent(modificarArticulo)
+                        .addGap(125, 125, 125)
+                        .addComponent(refrescar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -125,7 +145,10 @@ public class ListarArticulos extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(borrarArticulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(borrarArticulo)
+                    .addComponent(modificarArticulo)
+                    .addComponent(refrescar))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -180,11 +203,41 @@ public class ListarArticulos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_borrarArticuloActionPerformed
 
+    private void modificarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarArticuloActionPerformed
+        int numeroFila = this.tabla.getSelectedRow();
+        int numeroColumnas = this.tabla.getColumnCount();
+        
+        if (numeroFila!=-1){
+            ArrayList<String> datosFila = new ArrayList<>();
+            
+            for(int i = 0; i< numeroColumnas; i++){
+                datosFila.add(this.tabla.getValueAt(numeroFila, i).toString());   
+            }
+            
+            FormularioModificacionArticulo modi = new FormularioModificacionArticulo(datosFila.get(0),datosFila.get(1),datosFila.get(2));
+        
+            VentanaPrincipal.escritorio.add(modi);
+            
+            modi.toFront();
+            modi.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Necesita seleccionar una fila de la lista", "Alerta ", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_modificarArticuloActionPerformed
+
+    private void refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarActionPerformed
+        this.mostrarTabla();
+    }//GEN-LAST:event_refrescarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton borrarArticulo;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modificarArticulo;
+    private javax.swing.JButton refrescar;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

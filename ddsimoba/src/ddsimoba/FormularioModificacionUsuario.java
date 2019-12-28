@@ -89,7 +89,7 @@ public class FormularioModificacionUsuario extends javax.swing.JInternalFrame {
 
         bModificar.setText("Modificar");
         bModificar.setToolTipText("");
-        bModificar.setActionCommand("");
+        bModificar.setActionCommand("modificar");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bModificarActionPerformed(evt);

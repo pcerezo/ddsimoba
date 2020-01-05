@@ -32,6 +32,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuUsuarios = new javax.swing.JMenu();
         menuAltaUsuario = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        objCuenta = new javax.swing.JMenuItem();
         equipos = new javax.swing.JMenu();
         listarEquipo = new javax.swing.JMenuItem();
         menuTienda = new javax.swing.JMenu();
@@ -78,6 +79,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         menuUsuarios.add(jMenuItem1);
+
+        objCuenta.setText("Objetos cuenta");
+        objCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                objCuentaActionPerformed(evt);
+            }
+        });
+        menuUsuarios.add(objCuenta);
 
         jMenuBar1.add(menuUsuarios);
 
@@ -242,6 +251,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         den.setVisible(true);
     }//GEN-LAST:event_revisarDenunciaActionPerformed
 
+    private void objCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objCuentaActionPerformed
+        ListarObjetosCuenta objc = new ListarObjetosCuenta();
+        this.escritorio.add(objc);
+        objc.setVisible(true);
+    }//GEN-LAST:event_objCuentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -296,6 +311,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuResultados;
     private javax.swing.JMenu menuTienda;
     private javax.swing.JMenu menuUsuarios;
+    private javax.swing.JMenuItem objCuenta;
     private javax.swing.JMenuItem revisarDenuncia;
     // End of variables declaration//GEN-END:variables
 }

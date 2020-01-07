@@ -161,8 +161,9 @@ int fila = this.table.getSelectedRow();
             ConexionDB conexion = new ConexionDB();
             
             PreparedStatement pstm1 = null, pstm2 = null;
-            String consulta_aux = "UPDATE cuentapertenece SET karma=0 WHERE nombre = ?";
-            String consulta_aux2 = "UPDATE denuncia SET revisada=1 WHERE nombrec1 = ?";
+            //String consulta_aux = "UPDATE cuentapertenece SET karma=0 WHERE nombre = ?";
+            String consulta_aux = "DELETE FROM cuentapertenece WHERE nombre = ?";
+            String consulta_aux2 = "UPDATE denuncia SET revisada=2 WHERE nombrec1 = ?";
             
             try{
                 pstm1 = conexion.con.prepareStatement(consulta_aux);

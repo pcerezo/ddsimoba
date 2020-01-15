@@ -2,8 +2,13 @@ package ddsimoba;
 
 
 import ddsimoba.ConexionDB;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -23,7 +28,10 @@ public class ListarResultadosPartidas extends javax.swing.JInternalFrame {
      */
     public ListarResultadosPartidas() {
         initComponents();
-        
+        listar();        
+    }
+    
+    public void listar(){
         //Conectamos con la base de datos
         ConexionDB bd = new ConexionDB();
         
@@ -52,7 +60,6 @@ public class ListarResultadosPartidas extends javax.swing.JInternalFrame {
             e.printStackTrace(System.out);
             throw new RuntimeException(e);
         }
-        
     }
 
     /**
@@ -64,13 +71,29 @@ public class ListarResultadosPartidas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        borrarPuntuacion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         panelResultados = new javax.swing.JTable();
+        refrescar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        borrarPuntuacion.setText("Borrar puntuación");
+        borrarPuntuacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        borrarPuntuacion.setMargin(new java.awt.Insets(0, 5, 0, 5));
+        borrarPuntuacion.setMaximumSize(new java.awt.Dimension(40, 40));
+        borrarPuntuacion.setMinimumSize(new java.awt.Dimension(20, 20));
+        borrarPuntuacion.setPreferredSize(new java.awt.Dimension(40, 40));
+        borrarPuntuacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarPuntuacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(borrarPuntuacion, java.awt.BorderLayout.PAGE_END);
+        borrarPuntuacion.getAccessibleContext().setAccessibleParent(panelResultados);
 
         panelResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,12 +110,64 @@ public class ListarResultadosPartidas extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
+        refrescar.setText("Refrescar tabla");
+        refrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refrescarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(refrescar, java.awt.BorderLayout.PAGE_START);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void borrarPuntuacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarPuntuacionActionPerformed
+        ConexionDB bd = new ConexionDB();
+        int fila = -1;
+        fila = this.panelResultados.getSelectedRow();
+        
+        if(fila != -1) {
+            int idEquipo1 = Integer.parseInt(this.panelResultados.getValueAt(fila, 0).toString());
+            int idEquipo2 = Integer.parseInt(this.panelResultados.getValueAt(fila, 2).toString());
+            Date fecha = Date.valueOf(this.panelResultados.getValueAt(fila, 1).toString());
+            System.out.println("DELETE FROM juega WHERE idEquipo1 = " + idEquipo1 + " AND idEquipo2 = " + idEquipo2 + " AND fecha = " + fecha + ";");
+
+            String consulta = "DELETE FROM juega WHERE idequipo1 = " + idEquipo1 + " AND idequipo2 = " + idEquipo2 + " AND fecha = '" + fecha + "';";
+        
+            try {
+                Statement st = null;
+                st = bd.con.createStatement();
+                
+                int resultado = st.executeUpdate(consulta);
+                
+                if (resultado == 1) {
+                    System.out.println("Fila de resultados borrada correctamente.");
+                   
+                }
+                else {
+                    System.out.println("Error al borrar la fila de resultados.");
+                }
+                bd.cerrarConexionDB();
+            } catch (SQLException ex) {
+                Logger.getLogger(ListarResultadosPartidas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        else {
+            System.out.println("Debes seleccionar una fila para borrarla.");
+        }
+       
+    }//GEN-LAST:event_borrarPuntuacionActionPerformed
+
+    private void refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarActionPerformed
+        this.listar();
+    }//GEN-LAST:event_refrescarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton borrarPuntuacion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable panelResultados;
+    private javax.swing.JButton refrescar;
     // End of variables declaration//GEN-END:variables
 }

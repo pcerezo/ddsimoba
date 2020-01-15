@@ -3,19 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/DDSIMoba.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/FilaInsertadaCorrecta.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/RevisarDenuncias.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/ResultadoConsultasDenuncias.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/VentanaPrincipal.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/FormularioBusquedaSimpleDenuncias.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/FormularioModificacionUsuario.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/HistorialDenuncias.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/ListarUsuarios.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/VentanaAvisoBorrado.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/FormularioModificacionArticulo.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/ConexionDB.java</file>
-            <file>file:/home/jesus/Documents/IngInform/CURSO3/1erSEM/DDSI/Practicas/proyecto/ddsimoba/ddsimoba/ddsimoba/src/ddsimoba/ListarArticulos.java</file>
+            <file>file:/home/pablo/Documentos/GII/3º/DDSI/ddsimoba/ddsimoba/src/ddsimoba/VentanaPrincipal.java</file>
+            <file>file:/home/pablo/Documentos/GII/3º/DDSI/ddsimoba/ddsimoba/src/ddsimoba/FilaInsertadaCorrecta.java</file>
+            <file>file:/home/pablo/Documentos/GII/3º/DDSI/ddsimoba/ddsimoba/src/ddsimoba/ListarArticulos.java</file>
+            <file>file:/home/pablo/Documentos/GII/3º/DDSI/ddsimoba/ddsimoba/src/ddsimoba/ConexionDB.java</file>
+            <file>file:/home/pablo/Documentos/GII/3º/DDSI/ddsimoba/ddsimoba/src/ddsimoba/ListarUsuarios.java</file>
+            <file>file:/home/pablo/Documentos/GII/3º/DDSI/ddsimoba/ddsimoba/src/ddsimoba/FormularioAltaArticulo.java</file>
+            <file>file:/home/pablo/Documentos/GII/3º/DDSI/ddsimoba/ddsimoba/src/ddsimoba/DDSIMoba.java</file>
         </group>
     </open-files>
 </project-private>

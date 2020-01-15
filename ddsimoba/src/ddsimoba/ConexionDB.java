@@ -33,7 +33,7 @@ public class ConexionDB {
     public String username ="root";
     
     //Clave de usuario
-    public String password ="1234";
+    public String password ="123456";
     
     public Connection con = null;
     
